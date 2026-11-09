@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#09070d">
+  <meta name="description" content="VANTA — 19 December. An unforgettable night. Secure your ticket.">
+  <title>VANTA — 19 December</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    :root {
+      --bg:#09070d; --panel:#14101b; --panel2:#1b1425; --purple:#9b5cff;
+      --pink:#e65bff; --text:#f8f5fc; --muted:#aaa1b6; --line:rgba(255,255,255,.11);
+      --green:#9df2c0;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    .shell { width:min(1160px, calc(100% - 40px)); margin:auto; }
+    .nav { height:82px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+    .brand { font:700 26px 'Space Grotesk',sans-serif; letter-spacing:.22em; }
+    .brand span { color:var(--purple); }
+    .navlinks { display:flex; gap:30px; color:var(--muted); font-size:13px; }
+    .navlinks a:hover { color:white; }
+    .nav-cta { border:1px solid rgba(180,126,255,.6); border-radius:999px; padding:11px 18px; font-size:12px; font-weight:700; letter-spacing:.08em; }
+    .hero { min-height:670px; display:grid; grid-template-columns:1.08fr .92fr; align-items:center; gap:40px; padding:76px 0 80px; position:relative; }
+    .eyebrow { display:flex; align-items:center; gap:10px; color:#c9a8ff; text-transform:uppercase; letter-spacing:.22em; font-size:10px; font-weight:700; }
+    .dot { width:7px; height:7px; border-radius:50%; background:var(--pink); box-shadow:0 0 16px var(--pink); }
+    h1 { font:700 clamp(76px,12vw,150px)/.82 'Space Grotesk',sans-serif; letter-spacing:-.09em; margin:27px 0 22px; }
+    h1 .outline { color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.65); }
+    .hero-sub { max-width:480px; color:var(--muted); font-size:16px; line-height:1.75; }
+    .event-meta { display:flex; flex-wrap:wrap; gap:22px; margin:32px 0; }
+    .meta { display:flex; flex-direction:column; gap:6px; }
+    .meta small { color:var(--muted); text-transform:uppercase; letter-spacing:.16em; font-size:9px; }
+    .meta strong { font:600 15px 'Space Grotesk',sans-serif; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; border:0; cursor:pointer; padding:15px 23px; border-radius:4px; font-weight:700; font-size:11px; letter-spacing:.12em; text-transform:uppercase; transition:.2s; }
+    .btn-primary { color:white; background:linear-gradient(110deg,#7139c8,#b34be8); box-shadow:0 10px 35px rgba(155,92,255,.2); }
+    .btn-primary:hover { transform:translateY(-2px); filter:brightness(1.12); }
+    .btn-ghost { border:1px solid var(--line); color:white; background:transparent; }
+    .hero-art { min-height:470px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid rgba(190,130,255,.2); background:radial-gradient(ellipse at 50% 45%,rgba(130,50,190,.34),transparent 55%),linear-gradient(145deg,#21112e,#0c0912 65%); }
+    .hero-art:before,.hero-art:after { content:""; position:absolute; border:1px solid rgba(203,145,255,.23); border-radius:50%; width:390px;height:390px; transform:rotate(-25deg) scaleX(.58); }
+    .hero-art:after { width:500px;height:500px; transform:rotate(25deg) scaleX(.58); border-color:rgba(230,91,255,.18); }
+    .art-glow { position:absolute; width:220px;height:220px; border-radius:50%; background:#a43cff; filter:blur(100px); opacity:.3; }
+    .art-word { position:relative; z-index:2; text-align:center; }
+    .art-word b { display:block; font:700 clamp(52px,7vw,90px)/.9 'Space Grotesk',sans-serif; letter-spacing:-.08em; }
+    .art-word span { display:block; margin-top:18px; font-size:10px; letter-spacing:.45em; color:#d8b9ff; }
+    .vertical { position:absolute; right:18px; top:22px; writing-mode:vertical-rl; color:#9f8eae; font-size:9px; letter-spacing:.3em; }
+    .section { padding:86px 0; border-top:1px solid var(--line); }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:34px; }
+    .kicker { color:#c9a8ff; font-size:10px; text-transform:uppercase; letter-spacing:.22em; font-weight:700; }
+    h2 { font:600 clamp(32px,5vw,52px)/1 'Space Grotesk',sans-serif; letter-spacing:-.055em; margin:12px 0 0; }
+    .muted { color:var(--muted); line-height:1.7; }
+    .ticket-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .ticket { background:linear-gradient(155deg,var(--panel2),var(--panel)); border:1px solid var(--line); padding:24px 20px 20px; min-height:250px; display:flex; flex-direction:column; position:relative; transition:.2s; }
+    .ticket:hover { border-color:rgba(185,126,255,.65); transform:translateY(-3px); }
+    .ticket.featured { border-color:rgba(177,105,255,.75); background:linear-gradient(155deg,#2b1740,#15101d); }
+    .tag { font-size:9px; text-transform:uppercase; letter-spacing:.17em; color:#c9a8ff; font-weight:700; }
+    .ticket h3 { font:600 20px 'Space Grotesk',sans-serif; margin:18px 0 7px; }
+    .price { font:700 35px 'Space Grotesk',sans-serif; letter-spacing:-.06em; }
+    .ticket p { color:var(--muted); font-size:12px; margin:9px 0 20px; line-height:1.6; }
+    .ticket .btn { width:100%; margin-top:auto; padding:13px 10px; }
+    .select-btn { background:rgba(255,255,255,.07); color:white; border:1px solid var(--line); }
+    .select-btn.selected { background:var(--purple); border-color:var(--purple); }
+    .checkout-bar { margin-top:18px; padding:18px 20px; border:1px solid var(--line); background:#100c16; display:flex; align-items:center; justify-content:space-between; gap:15px; flex-wrap:wrap; }
+    .checkout-info { color:var(--muted); font-size:12px; }
+    .checkout-info strong { color:white; font:600 21px 'Space Grotesk',sans-serif; margin-left:10px; }
+    .event-details { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .detail-card { background:var(--panel); border:1px solid var(--line); padding:27px; }
+    .detail-card .icon { color:#c9a8ff; font-size:22px; }
+    .detail-card h3 { font:600 18px 'Space Grotesk',sans-serif; margin:14px 0 7px; }
+    .lineup { min-height:180px; display:flex; align-items:center; justify-content:center; text-align:center; border:1px dashed rgba(190,130,255,.35); background:radial-gradient(ellipse at center,rgba(122,55,175,.16),transparent 65%); padding:30px; }
+    .lineup strong { display:block; font:600 26px 'Space Grotesk',sans-serif; margin-bottom:8px; }
+    .footer { padding:32px 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:20px; color:var(--muted); font-size:11px; }
+    .modal-backdrop { display:none; position:fixed; inset:0; background:rgba(0,0,0,.78); z-index:20; align-items:center; justify-content:center; padding:20px; }
+    .modal-backdrop.open { display:flex; }
+    .modal { width:min(460px,100%); background:#17111f; border:1px solid rgba(190,130,255,.4); padding:28px; box-shadow:0 20px 80px #000; }
+    .modal h3 { font:600 25px 'Space Grotesk',sans-serif; margin:0 0 10px; }
+    .modal p { color:var(--muted); font-size:13px; line-height:1.7; }
+    .close { float:right; background:none; color:white; border:0; font-size:22px; cursor:pointer; }
+    .notice { color:#d6c8e4; font-size:11px; line-height:1.6; margin-top:14px; }
+    @media(max-width:850px) { .hero{grid-template-columns:1fr; padding-top:60px;} .hero-art{min-height:330px;} .ticket-grid{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:560px) { .shell{width:min(100% - 28px,1160px);} .nav{height:68px;} .navlinks{display:none;} .hero{min-height:auto;padding:58px 0;} .hero-art{min-height:270px;} .ticket-grid,.event-details{grid-template-columns:1fr;} .section{padding:65px 0;} .section-head{display:block;} .footer{flex-direction:column;} .event-meta{gap:18px;} }
+  </style>
+</head>
+<body>
+  <header class="shell nav">
+    <a class="brand" href="#">VANTA<span>.</span></a>
+    <nav class="navlinks"><a href="#experience">THE NIGHT</a><a href="#tickets">TICKETS</a></nav>
+    <a class="nav-cta" href="#tickets">GET TICKETS ↗</a>
+  </header>
+
+  <main>
+    <section class="shell hero">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> ONE NIGHT. NO ORDINARY ENERGY.</div>
+        <h1>VAN<span class="outline">TA</span></h1>
+        <p class="hero-sub">A night built for the music, the movement and the memories. Step into VANTA.</p>
+        <div class="event-meta">
+          <div class="meta"><small>DATE</small><strong>19 DECEMBER 2026</strong></div>
+          <div class="meta"><small>TIME</small><strong>18:00 — 04:00</strong></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tickets">Choose your ticket <span>↗</span></a>
+          <a class="btn btn-ghost" href="#experience">Discover VANTA</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="art-glow"></div>
+        <span class="vertical">19 / 12 / 26 — JOHANNESBURG</span>
+        <div class="art-word"><b>AFTER<br>THE<br>DARK.</b><span>VANTA · 2026</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="kicker">THE EXPERIENCE</div><h2>Make the night yours.</h2></div>
+          <p class="muted" style="max-width:360px;font-size:13px">Bring your people. Find your sound. Stay for the moments that turn into stories.</p>
+        </div>
+        <div class="event-details" style="grid-template-columns:1fr">
+          <div class="detail-card"><div class="icon">✳</div><h3>One unforgettable night</h3><p class="muted">19 December 2026. Doors open at 18:00 and the night runs until 04:00.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tickets">
+      <div class="shell">
+        <div class="section-head">
+          <div><div class="kicker">YOUR ENTRY</div><h2>Choose your access.</h2></div>
+          <p class="muted" style="max-width:300px;font-size:12px">Pick your ticket below. Your selection and total will update automatically.</p>
+        </div>
+        <div class="ticket-grid">
+          <article class="ticket">
+            <div class="tag">Limited release</div><h3>Early Bird</h3><div class="price">R120</div>
+            <p>Get in early. Catch the energy from the very beginning.</p>
+            <button class="btn select-btn" data-type="Early Bird" data-price="120">Select ticket</button>
+          </article>
+          <article class="ticket">
+            <div class="tag">General access</div><h3>General</h3><div class="price">R200</div>
+            <p>Your entry to the VANTA experience.</p>
+            <button class="btn select-btn" data-type="General" data-price="200">Select ticket</button>
+          </article>
+          <article class="ticket featured">
+            <div class="tag">The classic choice</div><h3>Standard</h3><div class="price">R300</div>
+            <p>Step into the night with standard admission.</p>
+            <button class="btn select-btn" data-type="Standard" data-price="300">Select ticket</button>
+          </article>
+          <article class="ticket">
+            <div class="tag">Premium access</div><h3>VIP</h3><div class="price">R450</div>
+            <p>Upgrade your night with VANTA VIP access.</p>
+            <button class="btn select-btn" data-type="VIP" data-price="450">Select ticket</button>
+          </article>
+        </div>
+        <div class="checkout-bar">
+          <div class="checkout-info"><span id="selection">No ticket selected</span><strong id="total">R0</strong></div>
+          <button class="btn btn-primary" id="checkout" disabled style="opacity:.45;cursor:not-allowed">Continue to checkout ↗</button>
+        </div>
+        <p class="notice">Ticket checkout is being prepared. This preview does not accept payments or issue valid entry tickets yet. Official checkout will be enabled after payment integration and testing.</p>
+      </div>
+    </section>
+
+    <section class="section" id="lineup">
+      <div class="shell">
+        <div class="section-head"><div><div class="kicker">THE SOUND</div><h2>Lineup loading.</h2></div></div>
+        <div class="lineup"><div><strong>ARTISTS TO BE ANNOUNCED</strong><span class="muted">Stay close. The VANTA lineup is coming.</span></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <div><span class="brand" style="font-size:18px">VANTA<span>.</span></span><div style="margin-top:8px">19 DECEMBER 2026 · 18:00 — 04:00</div></div>
+    <div>© 2026 VANTA. ALL RIGHTS RESERVED.</div>
+  </footer>
+
+  <div class="modal-backdrop" id="modal">
+    <div class="modal">
+      <button class="close" id="close" aria-label="Close">×</button>
+      <div class="kicker">VANTA CHECKOUT</div>
+      <h3>You're nearly in.</h3>
+      <p id="modal-copy">Online checkout is not connected yet.</p>
+      <p>We're building secure card and instant EFT payments, automatic ticket delivery and QR entry validation. No payment will be taken on this preview.</p>
+      <button class="btn btn-primary" id="modal-close">Got it</button>
+    </div>
+  </div>
+
+  <script>
+    let selected = null;
+    const buttons = document.querySelectorAll('.select-btn');
+    const selection = document.getElementById('selection');
+    const total = document.getElementById('total');
+    const checkout = document.getElementById('checkout');
+    const modal = document.getElementById('modal');
+    function money(value) { return 'R' + value.toLocaleString('en-ZA'); }
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(item => { item.classList.remove('selected'); item.textContent = 'Select ticket'; });
+        button.classList.add('selected');
+        button.textContent = 'Selected ✓';
+        selected = { type: button.dataset.type, price: Number(button.dataset.price) };
+        selection.textContent = selected.type + ' ticket selected';
+        total.textContent = money(selected.price);
+        checkout.disabled = false;
+        checkout.style.opacity = '1';
+        checkout.style.cursor = 'pointer';
+      });
+    });
+    checkout.addEventListener('click', () => {
+      if (!selected) return;
+      document.getElementById('modal-copy').textContent = selected.type + ' ticket · ' + money(selected.price) + '. Secure checkout is the next development step.';
+      modal.classList.add('open');
+    });
+    document.getElementById('close').addEventListener('click', () => modal.classList.remove('open'));
+    document.getElementById('modal-close').addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', event => { if (event.target === modal) modal.classList.remove('open'); });
+  </script>
+</body>
+</html>
